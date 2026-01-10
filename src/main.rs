@@ -1,4 +1,5 @@
 pub mod utils;
+pub mod models;
 use utils::{hash_password, verify_password };
 
 fn main() {
