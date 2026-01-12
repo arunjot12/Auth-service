@@ -5,4 +5,6 @@ edition = "2024"
 
 [dependencies]
 argon2 = { version = "0.5", features = ["std"] }
-
+diesel = { version = "2.2.0", features = ["postgres"] }
+serde = "1.0.228"
+dotenvy = "0.15"
