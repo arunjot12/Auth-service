@@ -1,10 +1,13 @@
 pub mod utils;
 pub mod models;
 use std::env;
+pub mod schema;
+pub use schema::*;
 pub use dotenvy::dotenv;
 
-use diesel::{ Connection, PgConnection};
+use diesel::{ Connection, PgConnection };
 use utils::{ hash_password, verify_password };
+use crate::models::user::SignupRequest;
 
 pub fn establish_connection() -> PgConnection {
     dotenv().ok();
@@ -12,7 +15,10 @@ pub fn establish_connection() -> PgConnection {
     PgConnection::establish(&data_base_url).unwrap_or_else(|_| panic!("Nothing Found"))
 }
 
-async fn signup() {}
+async fn signup(signup: SignupRequest) {
+    let email = signup.email;
+    let password = hash_password(&signup.password);
+}
 
 fn main() {
     establish_connection();
